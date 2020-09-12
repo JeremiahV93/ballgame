@@ -1,0 +1,10 @@
+{
+  "event1" : {
+    "stadiumId": "stadium1",
+    "date": "",
+    "startTime": "",
+    "awayTeam": "",
+    "uid": "",
+    "awayTeamAcro": ""
+  }
+}
