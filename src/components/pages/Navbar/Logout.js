@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-class LogOut extends React.Component {
+class Auth extends React.Component {
   logoutClickEvent = (e) => {
     e.preventDefault();
     firebase.auth().signOut();
@@ -17,4 +17,4 @@ class LogOut extends React.Component {
   }
 }
 
-export default LogOut;
+export default Auth;

@@ -12,7 +12,7 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import LogIn from './Login';
+import Auth from './Login';
 import LogOut from './Logout';
 
 class MyNavbar extends React.Component {
@@ -49,7 +49,7 @@ class MyNavbar extends React.Component {
       return (
         <Nav>
             <NavItem>
-              <LogIn/>
+              <Auth/>
             </NavItem>
           </Nav>
       );
