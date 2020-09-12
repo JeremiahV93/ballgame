@@ -12,7 +12,7 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import Auth from './Login';
+import Auth from './Auth';
 import LogOut from './Logout';
 
 class MyNavbar extends React.Component {

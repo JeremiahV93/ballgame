@@ -5,7 +5,7 @@ import 'firebase/auth';
 class LogIn extends React.Component {
   logInEvent = (e) => {
     e.preventDefault();
-    const googleProvider = new firebase.auth.GithubAuthProvider();
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(googleProvider);
   }
 
