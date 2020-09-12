@@ -12,7 +12,7 @@ import {
 import './App.scss';
 
 import Navbar from '../components/pages/Navbar/Navbar';
-import LogIn from '../components/pages/Navbar/Login';
+import Auth from '../components/pages/Navbar/Login';
 import Home from '../components/pages/Home/Home';
 
 import firebaseConnection from '../helpers/data/connection';
@@ -60,8 +60,8 @@ class App extends React.Component {
             <Navbar authed={authed} />
             <div>
               <Switch>
-              <PrivateRoute path="/home" component={Home} authed={authed} />
-              <PublicRoute path='/login' component={LogIn} authed={authed} />
+                <PrivateRoute path="/home" component={Home} authed={authed} />
+                <PublicRoute path='/auth' component={Auth} authed={authed} />
 
                 <Redirect from='*' to='/home' />
               </Switch>
