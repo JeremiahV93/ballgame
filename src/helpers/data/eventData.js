@@ -10,4 +10,6 @@ const getEventsByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getEventsByUid };
+const getEventById = (id) => axios.get(`${baseUrl}/events/${id}.json`);
+
+export default { getEventsByUid, getEventById };
