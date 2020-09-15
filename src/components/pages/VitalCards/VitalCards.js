@@ -4,6 +4,7 @@ import stadiumData from '../../../helpers/data/stadiumData';
 
 import eventShape from '../../../helpers/props/eventShape';
 
+import './vitalCards.scss';
 class VitalCards extends React.Component {
   state = {
     stadium: {},
@@ -16,17 +17,21 @@ class VitalCards extends React.Component {
   componentDidMount() {
     const { event } = this.props;
     stadiumData.stadiumDataById(event.stadiumId)
-      .then((res) => console.error(res))
+      .then((res) => this.setState({ stadium: res.data }))
       .catch((err) => console.error(err));
-    // this.setState({ stadium: stadiumData.stadiumDataById(event.stadiumId) });
   }
 
   render() {
     const { event } = this.props;
-
+    const { stadium } = this.state;
     return (
-      <div>
-      <p>{event.awayTeam}</p>
+      <div class="card" >
+        <img class="card-img-top" src={stadium.imgUrl} alt="Card cap" />
+        <div class="card-body">
+          <h5 class="card-title">{stadium.name}</h5>
+          <p class="card-text">{event.awayTeamAcro} @ {stadium.acronym}</p>
+          <p>Parking: ${stadium.parking}</p>
+        </div>
       </div>
     );
   }
