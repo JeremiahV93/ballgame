@@ -1,0 +1,12 @@
+{
+  "ticket1" : {
+    "section": "102",
+    "seats": "3B, 4B, 5B",
+    "eventId": "event1"
+  },
+  "ticket2" : {
+    "section": "212",
+    "seats": "5C, 6C, 7C",
+    "eventId": "event2"
+  }
+}
