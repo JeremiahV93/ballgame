@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import stadiumData from '../../../helpers/data/stadiumData';
 
 import eventShape from '../../../helpers/props/eventShape';
@@ -27,6 +28,8 @@ class VitalCards extends React.Component {
     const { event } = this.props;
     const { stadium } = this.state;
 
+    const startTime = moment(event.date).format('MMMM Do YYYY, h:mm a');
+
     const singleEventLink = `/events/${event.id}`;
 
     return (
@@ -35,6 +38,7 @@ class VitalCards extends React.Component {
         <div className="card-body">
           <h5 className="card-title">{stadium.name}</h5>
           <p className="card-text">{event.awayTeamAcro} @ {stadium.acronym}</p>
+          <p>{startTime}</p>
           <p>Parking: ${stadium.parking}</p>
           <Link to={singleEventLink} className='btn btn-info'> More Details </Link>
         </div>
