@@ -15,6 +15,7 @@ import Navbar from '../components/pages/Navbar/Navbar';
 import Home from '../components/pages/Home/Home';
 import LandingPage from '../components/shared/Landing/Landing';
 import SingleEvent from '../components/pages/SingleEvent/SingleEvent';
+import EventForm from '../components/pages/GameForm/EventForm';
 
 import firebaseConnection from '../helpers/data/connection';
 
@@ -63,6 +64,7 @@ class App extends React.Component {
               <Switch>
                 <PrivateRoute path="/home" component={Home} authed={authed} />
                 <PrivateRoute path="/events/:eventId" component={SingleEvent} authed={authed} />
+                <PrivateRoute path="/form" component={EventForm} authed={authed} />
 
                 <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
 

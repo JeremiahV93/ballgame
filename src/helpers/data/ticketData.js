@@ -17,4 +17,6 @@ const getTicketByEventId = (id) => new Promise((resolve, reject) => {
 
 const deleteTicket = (id) => axios.delete(`${baseUrl}/tickets/${id}.json`);
 
-export default { getTicketByEventId, deleteTicket };
+const addTicket = (newObj) => axios.post(`${baseUrl}/tickets.json`, newObj);
+
+export default { getTicketByEventId, deleteTicket, addTicket };
