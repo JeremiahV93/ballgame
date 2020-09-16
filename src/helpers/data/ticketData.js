@@ -15,4 +15,6 @@ const getTicketByEventId = (id) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getTicketByEventId };
+const deleteTicket = (id) => axios.delete(`${baseUrl}/tickets/${id}.json`);
+
+export default { getTicketByEventId, deleteTicket };

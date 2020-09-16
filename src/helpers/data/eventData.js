@@ -12,4 +12,6 @@ const getEventsByUid = (uid) => new Promise((resolve, reject) => {
 
 const getEventById = (id) => axios.get(`${baseUrl}/events/${id}.json`);
 
-export default { getEventsByUid, getEventById };
+const deleteEvent = (id) => axios.delete(`${baseUrl}/events/${id}.json`);
+
+export default { getEventsByUid, getEventById, deleteEvent };
