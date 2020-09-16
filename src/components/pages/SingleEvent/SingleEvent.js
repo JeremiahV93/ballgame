@@ -32,7 +32,11 @@ class SingleEvent extends React.Component {
   getTicketData = () => {
     const { eventId } = this.props.match.params;
     ticketData.getTicketByEventId(eventId)
-      .then((res) => this.setState({ ticket: res }))
+      .then((res) => {
+        const ticket = res;
+        ticket.seats = ticket.seats.join(', ');
+        this.setState({ ticket });
+      })
       .catch((err) => console.error(err));
   };
 

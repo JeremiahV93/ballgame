@@ -1,14 +1,12 @@
 {
   "ticket1" : {
     "section": "102",
-    "amount": 3,
-    "seats": "3B, 4B, 5B",
+    "seats": ["3B", "4B", "5B"], 
     "eventId": "event1"
   },
   "ticket2" : {
     "section": "212",
-    "amount": 2,
-    "seats": "5C, 7C",
+    "seats": ["5C", "7C"],
     "eventId": "event2"
   }
 }

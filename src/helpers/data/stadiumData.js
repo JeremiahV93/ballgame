@@ -5,7 +5,7 @@ import utils from '../utils';
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
 const stadiumData = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/stadiums`)
+  axios.get(`${baseUrl}/stadiums.json`)
     .then(({ data }) => resolve(utils.firebaseArray(data)))
     .catch((err) => reject(err));
 });
