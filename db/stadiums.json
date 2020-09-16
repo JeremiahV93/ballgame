@@ -1,7 +1,7 @@
 {
   "stadium1": {
     "name": "Angel Stadium",
-    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Angelstadiummarch2019.jpg/180px-Angelstadiummarch2019.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Angelstadiummarch2019.jpg/1280px-Angelstadiummarch2019.jpg",
     "parking": 24,
     "team": "Los Angeles Angels",
     "acronym": "LAA"
@@ -204,7 +204,7 @@
   },
   "stadium4": {
     "name": "Yankee Stadium",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Yankee_Stadium_upper_deck_2010.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Le_Yankee_Stadium.jpg",
     "parking": 36,
     "team": "New York Yankees",
     "acronym": "NYY"

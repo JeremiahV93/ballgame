@@ -1,6 +1,11 @@
 import React from 'react';
+import moment from 'moment';
 import eventShape from '../../../helpers/props/eventShape';
 import eventData from '../../../helpers/data/eventData';
+import ticketData from '../../../helpers/data/ticketData';
+import stadiumData from '../../../helpers/data/stadiumData';
+
+import './SingleEvent.scss';
 
 class SingleEvent extends React.Component {
   static propTypes = {
@@ -9,29 +14,92 @@ class SingleEvent extends React.Component {
 
   state = {
     event: {},
-    tickets: {},
+    ticket: {},
+    stadium: {},
   }
 
-  getEventData = () => {
+  getEventAndStadiumData = () => {
     const { eventId } = this.props.match.params;
-    console.error(eventId);
     eventData.getEventById(eventId)
-      .then((res) => this.setState({ event: res.data }))
+      .then((res) => {
+        this.setState({ event: res.data });
+        stadiumData.stadiumDataById(res.data.stadiumId)
+          .then((obj) => this.setState({ stadium: obj.data }))
+          .catch((err) => console.error(err));
+      })
       .catch((err) => console.error(err));
   }
 
   getTicketData = () => {
-
+    const { eventId } = this.props.match.params;
+    console.error(eventId);
+    ticketData.getTicketByEventId(eventId)
+      .then((res) => this.setState({ ticket: res }))
+      .catch((err) => console.error(err));
   };
 
+  // Function below doesnt work alone due to not having the event data when it attempts to execute
+  // getStadiumData = () => {
+  //   const { event } = this.state;
+  //   stadiumData.stadiumDataById(event.stadiumId)
+  //     .then((res) => this.setState({ stadium: res.data }))
+  //     .catch((err) => console.error(err));
+  // }
+
   componentDidMount() {
-    this.getEventData();
+    this.getEventAndStadiumData();
+    this.getTicketData();
   }
 
+  // "event1" : {
+  //   "stadiumId": "stadium1",
+  //   "date": "2020-08-27T15:14:54-05:00",
+  //   "awayTeam": "Houston Astros",
+  //   "awayTeamAcro": "HOU",
+  //   "uid": "7JXbD4GzQAT9rpIVRUx1Yqa194n2"
+  // },
+  // "ticket1" : {
+  //   "section": "102",
+  //   "amount": 3,
+  //   "seats": "3B, 4B, 5B",
+  //   "eventId": "event1"
+  // },
+  // "stadium1": {
+  //   "name": "Angel Stadium",
+  //   "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Angelstadiummarch2019.jpg/180px-Angelstadiummarch2019.jpg",
+  //   "parking": 24,
+  //   "team": "Los Angeles Angels",
+  //   "acronym": "LAA"
+  // },
+
   render() {
+    const { event, ticket, stadium } = this.state;
+
+    const startTime = moment(event.date).format('MMMM Do YYYY, h:mm a');
+
     return (
-      <div>
-        this is just one event
+      <div className="card single-card" >
+        <img className="card-img-top" src={stadium.imgUrl} alt={stadium.name} />
+        <div className="card-body">
+          <h5 className="card-title">{stadium.name}</h5>
+          <p className="card-text"> {event.awayTeam} @ {stadium.team} </p>
+          <p className="card-text"> Start Time: {startTime} </p>
+          <p className="card-text">Parking:${stadium.parking}</p>
+          <div class="container">
+          <div class="row">
+            <div class="col-sm-4">Tickets:</div>
+          </div>
+          <div class="row">
+              <div class="col-sm-offset-4 col-sm-4"> Section:</div>
+              <div class="col-sm-4">{ticket.section}</div>
+          </div>
+          <div class="row">
+              <div class="col-sm-offset-4 col-sm-4">Seats:</div>
+              <div class="col-sm-4"> {ticket.seats} </div>
+          </div>
+          </div>
+          <button className='btn btn-danger'>Cancel Event</button>
+        </div>
       </div>
     );
   }
