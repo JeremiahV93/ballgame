@@ -39,7 +39,7 @@ class VitalCards extends React.Component {
           <h5 className="card-title">{stadium.name}</h5>
           <p className="card-text">{event.awayTeamAcro} @ {stadium.acronym}</p>
           <p>{startTime}</p>
-          <p>Parking: ${stadium.parking}</p>
+          <>Parking: ${stadium.parking}</>
           <Link to={singleEventLink} className='btn btn-info'> More Details </Link>
         </div>
       </div>
