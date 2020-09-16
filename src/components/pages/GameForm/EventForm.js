@@ -1,6 +1,11 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
 
 import stadiumData from '../../../helpers/data/stadiumData';
+import authData from '../../../helpers/data/authData';
+
+import eventData from '../../../helpers/data/eventData';
+import tickeData from '../../../helpers/data/ticketData';
 
 class EventForm extends React.Component {
   state = {
@@ -10,8 +15,33 @@ class EventForm extends React.Component {
     awayTeamAcro: '',
     section: '',
     seats: '',
-    stadiumID: '',
+    stadiumId: '',
   }
+
+  submitEvent = (e) => {
+    e.preventDefault();
+    const {
+      awayTeam, awayTeamAcro, section, seats, stadiumId, date,
+    } = this.state;
+
+    const newEvent = {
+      awayTeam, awayTeamAcro, stadiumId, date,
+    };
+    newEvent.uid = authData.getUid();
+
+    const newTicket = { section };
+    newTicket.seats = seats.split(',');
+
+    eventData.addEvent(newEvent)
+      .then((res) => {
+        newTicket.eventId = res.data.name;
+        tickeData.addTicket(newTicket)
+          .then(() => {
+            this.props.history.push('/home');
+          });
+      })
+      .catch((err) => console.error(err));
+  };
 
   getStadiumData = () => {
     stadiumData.stadiumData()
@@ -25,7 +55,7 @@ class EventForm extends React.Component {
 
   stadiumEventChange = (e) => {
     e.preventDefault();
-    this.setState({ stadiumID: e.target.value });
+    this.setState({ stadiumId: e.target.value });
   }
 
   awayTeamChange = (e) => {
@@ -45,36 +75,51 @@ class EventForm extends React.Component {
     this.setState({ seats: e.target.value });
   }
 
+  dateEvent = (date) => {
+    this.setState({ date });
+  }
+
   render() {
-    const { stadiums, stadiumId, awayTeam } = this.state;
+    const {
+      stadiums, stadiumId, awayTeam, date,
+    } = this.state;
 
     // string split on a comma and turn it into an array
     return (
       <form className='col-6 offset-3'>
 
-        <label for="home-stadium">Stadium</label>
+        <label htmlFor="home-stadium">Stadium</label>
         <select value={stadiumId} onChange={this.stadiumEventChange} id='stadium' className="form-control">
           <option>Default select</option>
-          {stadiums.map((stadium) => <option value={stadium.id}>{stadium.name}</option>)}
+          {stadiums.map((stadium) => <option key={stadium.id} value={stadium.id}>{stadium.name}</option>)}
         </select>
 
-        <label for="visiting-team">Visiting Team</label>
+        {/* <div className="form-group">
+          <label htmlFor="gameDate">Game Date:</label>
+          <DatePicker
+          // selected={date}
+          onChange={this.dateEvent}
+          showTimeSelect
+          />
+        </div> */}
+
+        <label htmlFor="visiting-team">Visiting Team</label>
         <select value={awayTeam} onChange={this.awayTeamChange} className="form-control">
           <option>Default select</option>
-          {stadiums.map((stadium) => <option value={stadium.team}>{stadium.team}</option>)}
+          {stadiums.map((stadium) => <option key={stadium.id} value={stadium.team}>{stadium.team}</option>)}
         </select>
 
         <div className="form-group">
-          <label for="section">Section</label>
+          <label htmlFor="section">Section</label>
           <input type="text" onChange={this.sectionEventChange} className="form-control" id="section" placeholder="Section" />
         </div>
 
         <div className="form-group">
-          <label for="seats">Seats</label>
+          <label htmlFor="seats">Seats</label>
           <input type="text" onChange={this.seatsEventChange} className="form-control" id="seats" placeholder="Please use commas between seats example: '1B, 2B, 3B'" />
         </div>
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary" onClick={this.submitEvent}>Submit</button>
       </form>
     );
   }
