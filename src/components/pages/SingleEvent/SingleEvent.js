@@ -24,15 +24,13 @@ class SingleEvent extends React.Component {
       .then((res) => {
         this.setState({ event: res.data });
         stadiumData.stadiumDataById(res.data.stadiumId)
-          .then((obj) => this.setState({ stadium: obj.data }))
-          .catch((err) => console.error(err));
+          .then((obj) => this.setState({ stadium: obj.data }));
       })
       .catch((err) => console.error(err));
   }
 
   getTicketData = () => {
     const { eventId } = this.props.match.params;
-    console.error(eventId);
     ticketData.getTicketByEventId(eventId)
       .then((res) => this.setState({ ticket: res }))
       .catch((err) => console.error(err));
@@ -50,6 +48,22 @@ class SingleEvent extends React.Component {
     this.getEventAndStadiumData();
     this.getTicketData();
   }
+
+  deleteEventAndTickets = (e) => {
+    e.preventDefault();
+    const { ticket } = this.state;
+    const { eventId } = this.props.match.params;
+    const objsToDelete = [];
+
+    objsToDelete.push(ticketData.deleteTicket(ticket.id));
+    objsToDelete.push(eventData.deleteEvent(eventId));
+
+    Promise.all(objsToDelete)
+      .then(() => {
+        this.props.history.push('/home');
+      })
+      .catch((err) => console.error(err));
+  };
 
   // "event1" : {
   //   "stadiumId": "stadium1",
@@ -85,20 +99,20 @@ class SingleEvent extends React.Component {
           <p className="card-text"> {event.awayTeam} @ {stadium.team} </p>
           <p className="card-text"> Start Time: {startTime} </p>
           <p className="card-text">Parking:${stadium.parking}</p>
-          <div class="container">
-          <div class="row">
-            <div class="col-sm-4">Tickets:</div>
+          <div className="container">
+          <div className="row">
+            <div className="col-sm-4">Tickets:</div>
           </div>
-          <div class="row">
-              <div class="col-sm-offset-4 col-sm-4"> Section:</div>
-              <div class="col-sm-4">{ticket.section}</div>
+          <div className="row">
+              <div className="col-sm-offset-4 col-sm-4"> Section:</div>
+              <div className="col-sm-4">{ticket.section}</div>
           </div>
-          <div class="row">
-              <div class="col-sm-offset-4 col-sm-4">Seats:</div>
-              <div class="col-sm-4"> {ticket.seats} </div>
+          <div className="row">
+              <div className="col-sm-offset-4 col-sm-4">Seats:</div>
+              <div className="col-sm-4"> {ticket.seats} </div>
           </div>
           </div>
-          <button className='btn btn-danger'>Cancel Event</button>
+          <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
         </div>
       </div>
     );
