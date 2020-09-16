@@ -34,9 +34,31 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
+const RoutesContainer = ({ authed }) => {
+  if (authed === null) {
+    return (
+      <i className="fas fa-spin fa-baseball-ball"></i>
+    );
+  }
+
+  return (
+    <div>
+      <Switch>
+        <PrivateRoute path="/home" component={Home} authed={authed} />
+        <PrivateRoute path="/events/:eventId" component={SingleEvent} authed={authed} />
+        <PrivateRoute path="/form" component={EventForm} authed={authed} />
+
+        <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
+
+        <Redirect from='*' to='/home' />
+      </Switch>
+    </div>
+  );
+};
+
 class App extends React.Component {
   state = {
-    authed: false,
+    authed: null,
   }
 
   componentDidMount() {
@@ -58,20 +80,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <React.Fragment>
             <Navbar authed={authed} />
-            <div>
-              <Switch>
-                <PrivateRoute path="/home" component={Home} authed={authed} />
-                <PrivateRoute path="/events/:eventId" component={SingleEvent} authed={authed} />
-                <PrivateRoute path="/form" component={EventForm} authed={authed} />
-
-                <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
-
-                <Redirect from='*' to='/home' />
-              </Switch>
-            </div>
-          </React.Fragment>
+            <RoutesContainer authed={authed} />
         </BrowserRouter>
       </div>
     );
