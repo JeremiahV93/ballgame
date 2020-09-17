@@ -102,7 +102,7 @@ class SingleEvent extends React.Component {
           </div>
           </div>
           <Link to={eventFormLink} className='btn btn-warning'> Update Event </Link>
-          { buildNotes }
+          { buildNotes() }
           <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
         </div>
       </div>
