@@ -3,10 +3,16 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 
+@font-face {
+  font-family: 'marquee-font';
+  src: local('marquee-font'), url(../assets/script.ttf) format('truetype')
+}
+
 body {
   background-color: $favColor;
   .fa-baseball-ball{
     font-size: 15em;
     color: white;
   }
+  
 }

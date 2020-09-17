@@ -7,6 +7,9 @@ import authData from '../../../helpers/data/authData';
 import eventData from '../../../helpers/data/eventData';
 import tickeData from '../../../helpers/data/ticketData';
 
+import 'react-datepicker/dist/react-datepicker.css';
+import './EventForm.scss';
+
 class EventForm extends React.Component {
   state = {
     stadiums: [],
@@ -94,14 +97,14 @@ class EventForm extends React.Component {
           {stadiums.map((stadium) => <option key={stadium.id} value={stadium.id}>{stadium.name}</option>)}
         </select>
 
-        {/* <div className="form-group">
+        <div className="form-group date">
           <label htmlFor="gameDate">Game Date:</label>
           <DatePicker
-          // selected={date}
+          selected={date}
           onChange={this.dateEvent}
           showTimeSelect
           />
-        </div> */}
+        </div>
 
         <label htmlFor="visiting-team">Visiting Team</label>
         <select value={awayTeam} onChange={this.awayTeamChange} className="form-control">
