@@ -14,6 +14,22 @@ class UpdateEvent extends React.Component {
     stadiums: [],
   }
 
+  update = (e) => {
+    e.preventDefault();
+    const { event, ticket } = this.state;
+    const { eventId } = this.props.match.params;
+    ticket.seats = ticket.seats.split(',');
+
+    eventData.updateEvent(event, eventId)
+      .then(() => {
+        ticketData.updateTicket(ticket, ticket.id)
+          .then(() => {
+            this.props.history.goBack();
+          });
+      })
+      .catch((err) => console.error(err));
+  }
+
   getEventAndStadiumData = () => {
     const { eventId } = this.props.match.params;
     eventData.getEventById(eventId)
@@ -128,7 +144,7 @@ class UpdateEvent extends React.Component {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary" onClick={this.submitEvent}>Update Event</button>
+        <button type="submit" className="btn btn-primary" onClick={this.update}>Update Event</button>
       </form>
     );
   }

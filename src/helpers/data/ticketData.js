@@ -19,4 +19,8 @@ const deleteTicket = (id) => axios.delete(`${baseUrl}/tickets/${id}.json`);
 
 const addTicket = (newObj) => axios.post(`${baseUrl}/tickets.json`, newObj);
 
-export default { getTicketByEventId, deleteTicket, addTicket };
+const updateTicket = (obj, objid) => axios.put(`${baseUrl}/tickets/${objid}.json`, obj);
+
+export default {
+  getTicketByEventId, deleteTicket, addTicket, updateTicket,
+};
