@@ -73,9 +73,19 @@ class SingleEvent extends React.Component {
     const eventFormLink = `/update/${eventId}`;
     const NoteFormLink = `/note-form/${eventId}`;
 
-    const buildNotes = () => {
+    const addNotes = () => {
       if (moment(event.date).isBefore(today)) {
         return <Link to={NoteFormLink} className='btn btn-success'> Add Note </Link>;
+      }
+      return null;
+    };
+
+    const buildNotes = () => {
+      if (event.notes) {
+        return <div className="row">
+                  <div className="col-sm-offset-4 col-sm-4">Notes:</div>
+                  <div className="col-sm-4"> {event.notes} </div>
+                </div>;
       }
       return null;
     };
@@ -100,9 +110,10 @@ class SingleEvent extends React.Component {
               <div className="col-sm-offset-4 col-sm-4">Seats:</div>
               <div className="col-sm-4"> {ticket.seats} </div>
           </div>
+          { buildNotes() }
           </div>
           <Link to={eventFormLink} className='btn btn-warning'> Update Event </Link>
-          { buildNotes() }
+          { addNotes() }
           <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
         </div>
       </div>
