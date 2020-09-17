@@ -17,6 +17,7 @@ class SingleEvent extends React.Component {
     event: {},
     ticket: {},
     stadium: {},
+    today: new Date(),
   }
 
   getEventAndStadiumData = () => {
@@ -63,11 +64,31 @@ class SingleEvent extends React.Component {
   };
 
   render() {
-    const { event, ticket, stadium } = this.state;
+    const {
+      event, ticket, stadium, today,
+    } = this.state;
+    const { eventId } = this.props.match.params;
 
     const startTime = moment(event.date).format('MMMM Do YYYY, h:mm a');
-    const { eventId } = this.props.match.params;
     const eventFormLink = `/update/${eventId}`;
+    const NoteFormLink = `/note-form/${eventId}`;
+
+    const addNotes = () => {
+      if (moment(event.date).isBefore(today)) {
+        return <Link to={NoteFormLink} className='btn btn-success'> Add Note </Link>;
+      }
+      return null;
+    };
+
+    const buildNotes = () => {
+      if (event.notes) {
+        return <div className="row">
+                  <div className="col-sm-offset-4 col-sm-4">Notes:</div>
+                  <div className="col-sm-4"> {event.notes} </div>
+                </div>;
+      }
+      return null;
+    };
 
     return (
       <div className="card single-card" >
@@ -89,8 +110,10 @@ class SingleEvent extends React.Component {
               <div className="col-sm-offset-4 col-sm-4">Seats:</div>
               <div className="col-sm-4"> {ticket.seats} </div>
           </div>
+          { buildNotes() }
           </div>
           <Link to={eventFormLink} className='btn btn-warning'> Update Event </Link>
+          { addNotes() }
           <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
         </div>
       </div>
