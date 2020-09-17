@@ -39,8 +39,9 @@ class PastEvents extends React.Component {
 
      return (
       <div>
+        <h1 className='title'> Past Games </h1>
         <div className='cards'>
-        { vitalCards }
+          { vitalCards }
         </div>
       </div>
      );
