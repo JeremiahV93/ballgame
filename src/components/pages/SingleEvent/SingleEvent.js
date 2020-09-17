@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import eventShape from '../../../helpers/props/eventShape';
 import eventData from '../../../helpers/data/eventData';
 import ticketData from '../../../helpers/data/ticketData';
@@ -40,14 +41,6 @@ class SingleEvent extends React.Component {
       .catch((err) => console.error(err));
   };
 
-  // Function below doesnt work alone due to not having the event data when it attempts to execute
-  // getStadiumData = () => {
-  //   const { event } = this.state;
-  //   stadiumData.stadiumDataById(event.stadiumId)
-  //     .then((res) => this.setState({ stadium: res.data }))
-  //     .catch((err) => console.error(err));
-  // }
-
   componentDidMount() {
     this.getEventAndStadiumData();
     this.getTicketData();
@@ -69,31 +62,12 @@ class SingleEvent extends React.Component {
       .catch((err) => console.error(err));
   };
 
-  // "event1" : {
-  //   "stadiumId": "stadium1",
-  //   "date": "2020-08-27T15:14:54-05:00",
-  //   "awayTeam": "Houston Astros",
-  //   "awayTeamAcro": "HOU",
-  //   "uid": "7JXbD4GzQAT9rpIVRUx1Yqa194n2"
-  // },
-  // "ticket1" : {
-  //   "section": "102",
-  //   "amount": 3,
-  //   "seats": "3B, 4B, 5B",
-  //   "eventId": "event1"
-  // },
-  // "stadium1": {
-  //   "name": "Angel Stadium",
-  //   "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Angelstadiummarch2019.jpg/180px-Angelstadiummarch2019.jpg",
-  //   "parking": 24,
-  //   "team": "Los Angeles Angels",
-  //   "acronym": "LAA"
-  // },
-
   render() {
     const { event, ticket, stadium } = this.state;
 
     const startTime = moment(event.date).format('MMMM Do YYYY, h:mm a');
+    const { eventId } = this.props.match.params;
+    const eventFormLink = `/update/${eventId}`;
 
     return (
       <div className="card single-card" >
@@ -116,6 +90,7 @@ class SingleEvent extends React.Component {
               <div className="col-sm-4"> {ticket.seats} </div>
           </div>
           </div>
+          <Link to={eventFormLink} className='btn btn-warning'> Update Event </Link>
           <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
         </div>
       </div>

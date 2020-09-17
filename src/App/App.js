@@ -17,6 +17,7 @@ import PastEvents from '../components/pages/PastEvents/PastEvents';
 import LandingPage from '../components/shared/Landing/Landing';
 import SingleEvent from '../components/pages/SingleEvent/SingleEvent';
 import EventForm from '../components/pages/GameForm/EventForm';
+import UpdateForm from '../components/pages/UpdateEvent/UpdateEvent';
 
 import firebaseConnection from '../helpers/data/connection';
 
@@ -48,6 +49,7 @@ const RoutesContainer = ({ authed }) => {
         <PrivateRoute path="/home" component={Home} authed={authed} />
         <PrivateRoute path="/events/:eventId" component={SingleEvent} authed={authed} />
         <PrivateRoute path="/form" component={EventForm} authed={authed} />
+        <PrivateRoute path="/update/:eventId" component={UpdateForm} authed={authed} />
         <PrivateRoute path="/past-events" component={PastEvents} authed={authed} />
 
         <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />

@@ -25,6 +25,7 @@ class Home extends React.Component {
           }
         });
         this.setState({ upcomingEvents });
+        this.vitalCards();
       })
       .catch((err) => console.error(err));
   }
@@ -33,15 +34,23 @@ class Home extends React.Component {
     this.getUpcomingEvents();
   }
 
-  render() {
+  vitalCards = () => {
     const { upcomingEvents } = this.state;
 
-    const vitalCards = upcomingEvents.map((event) => <VitalCards event={event} key={event.id} />);
+    if (upcomingEvents.length === 0) {
+      return (
+        <i className="fas fa-spin fa-baseball-ball"></i>
+      );
+    }
+    return upcomingEvents.map((event) => <VitalCards event={event} key={event.id} />);
+  }
 
+  render() {
     return (
       <div>
+        <h1 className='title'> Upcoming Games</h1>
         <div className='cards'>
-        { vitalCards }
+          { this.vitalCards() }
         </div>
       </div>
     );
