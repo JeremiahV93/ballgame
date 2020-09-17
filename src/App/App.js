@@ -13,6 +13,7 @@ import './App.scss';
 
 import Navbar from '../components/pages/Navbar/Navbar';
 import Home from '../components/pages/Home/Home';
+import PastEvents from '../components/pages/PastEvents/PastEvents';
 import LandingPage from '../components/shared/Landing/Landing';
 import SingleEvent from '../components/pages/SingleEvent/SingleEvent';
 import EventForm from '../components/pages/GameForm/EventForm';
@@ -47,6 +48,7 @@ const RoutesContainer = ({ authed }) => {
         <PrivateRoute path="/home" component={Home} authed={authed} />
         <PrivateRoute path="/events/:eventId" component={SingleEvent} authed={authed} />
         <PrivateRoute path="/form" component={EventForm} authed={authed} />
+        <PrivateRoute path="/past-events" component={PastEvents} authed={authed} />
 
         <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
 

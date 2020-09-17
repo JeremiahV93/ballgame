@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import authData from '../../../helpers/data/authData';
 import eventData from '../../../helpers/data/eventData';
@@ -9,25 +10,33 @@ import './Home.scss';
 
 class Home extends React.Component {
   state = {
-    events: [],
+    upcomingEvents: [],
+    today: new Date(),
   }
 
-  getEventData = () => {
+  getUpcomingEvents = () => {
     eventData.getEventsByUid(authData.getUid())
       .then((data) => {
-        this.setState({ events: data });
+        const { today } = this.state;
+        const upcomingEvents = [];
+        data.forEach((eachEvent) => {
+          if (moment(eachEvent.date).isAfter(today) || moment(eachEvent.date).isSame(today)) {
+            upcomingEvents.push(eachEvent);
+          }
+        });
+        this.setState({ upcomingEvents });
       })
       .catch((err) => console.error(err));
   }
 
   componentDidMount() {
-    this.getEventData();
+    this.getUpcomingEvents();
   }
 
   render() {
-    const { events } = this.state;
+    const { upcomingEvents } = this.state;
 
-    const vitalCards = events.map((event) => <VitalCards event={event} key={event.id} />);
+    const vitalCards = upcomingEvents.map((event) => <VitalCards event={event} key={event.id} />);
 
     return (
       <div>
