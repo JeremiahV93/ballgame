@@ -5,6 +5,8 @@ import eventData from '../../../helpers/data/eventData';
 
 import VitalCards from '../VitalCards/VitalCards';
 
+import './Home.scss';
+
 class Home extends React.Component {
   state = {
     events: [],
@@ -29,7 +31,9 @@ class Home extends React.Component {
 
     return (
       <div>
-      { vitalCards }
+        <div className='cards'>
+        { vitalCards }
+        </div>
       </div>
     );
   }

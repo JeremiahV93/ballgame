@@ -2,7 +2,7 @@
   "event1" : {
     "stadiumId": "stadium1",
     "date": "2021-07-04T15:15:00-05:00",
-    "awayTeam": "Houston Astros",
+    "awayTeam": "Houston Astros*",
     "awayTeamAcro": "HOU",
     "uid": "7JXbD4GzQAT9rpIVRUx1Yqa194n2"
   },
