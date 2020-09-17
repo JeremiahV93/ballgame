@@ -10,16 +10,14 @@ import './Home.scss';
 
 class Home extends React.Component {
   state = {
-    events: [],
+    upcomingEvents: [],
     pastEvents: [],
     today: new Date(),
   }
 
   getEventData = () => {
     eventData.getEventsByUid(authData.getUid())
-      .then((data) => {
-        this.setState({ events: data });
-      })
+      .then()
       .catch((err) => console.error(err));
   }
 
@@ -38,15 +36,30 @@ class Home extends React.Component {
       .catch((err) => console.error(err));
   }
 
+  getUpcomingEvents = () => {
+    eventData.getEventsByUid(authData.getUid())
+      .then((data) => {
+        const { today } = this.state;
+        const upcomingEvents = [];
+        data.forEach((eachEvent) => {
+          if (moment(eachEvent.date).isAfter(today) || moment(eachEvent.date).isSame(today)) {
+            upcomingEvents.push(eachEvent);
+          }
+        });
+        this.setState({ upcomingEvents });
+      })
+      .catch((err) => console.error(err));
+  }
+
   componentDidMount() {
-    this.getEventData();
+    this.getUpcomingEvents();
     this.getPastEventData();
   }
 
   render() {
-    const { events } = this.state;
+    const { upcomingEvents } = this.state;
 
-    const vitalCards = events.map((event) => <VitalCards event={event} key={event.id} />);
+    const vitalCards = upcomingEvents.map((event) => <VitalCards event={event} key={event.id} />);
 
     return (
       <div>
