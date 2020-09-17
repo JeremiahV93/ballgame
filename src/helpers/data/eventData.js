@@ -18,7 +18,7 @@ const addEvent = (newObj) => axios.post(`${baseUrl}/events.json`, newObj);
 
 const updateEvent = (obj, objid) => axios.put(`${baseUrl}/events/${objid}.json`, obj);
 
-const addEventNotes = (eventid, addedEventObj) => axios.patch(`${baseUrl}.events/${eventid}.json`, addedEventObj);
+const addEventNotes = (eventid, addedEventObj) => axios.patch(`${baseUrl}/events/${eventid}.json`, addedEventObj);
 
 export default {
   getEventsByUid, getEventById, deleteEvent, addEvent, updateEvent, addEventNotes,

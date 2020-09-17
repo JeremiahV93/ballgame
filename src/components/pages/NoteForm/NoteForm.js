@@ -20,7 +20,8 @@ class NoteForm extends React.Component {
     e.preventDefault();
     const { notes } = this.state;
     const { eventId } = this.props.match.params;
-    eventData.addEventNotes(eventId, notes)
+    const patchNotes = { notes };
+    eventData.addEventNotes(eventId, patchNotes)
       .then(() => {
         this.props.history.goBack();
       })
