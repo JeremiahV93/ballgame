@@ -13,44 +13,38 @@ class PastEvents extends React.Component {
     today: new Date(),
   }
 
-  getEventData = () => {
-    eventData.getEventsByUid(authData.getUid())
-      .then()
-      .catch((err) => console.error(err));
-  }
+   getPastEventData = () => {
+     eventData.getEventsByUid(authData.getUid())
+       .then((data) => {
+         const { today } = this.state;
+         const pastEvents = [];
+         data.forEach((eachEvent) => {
+           if (moment(eachEvent.date).isBefore(today)) {
+             pastEvents.push(eachEvent);
+           }
+         });
+         this.setState({ pastEvents });
+       })
+       .catch((err) => console.error(err));
+   }
 
-  getPastEventData = () => {
-    eventData.getEventsByUid(authData.getUid())
-      .then((data) => {
-        const { today } = this.state;
-        const pastEvents = [];
-        data.forEach((eachEvent) => {
-          if (moment(eachEvent.date).isBefore(today)) {
-            pastEvents.push(eachEvent);
-          }
-        });
-        this.setState({ pastEvents });
-      })
-      .catch((err) => console.error(err));
-  }
+   componentDidMount() {
+     this.getPastEventData();
+   }
 
-  componentDidMount() {
-    this.getPastEventData();
-  }
+   render() {
+     const { pastEvents } = this.state;
 
-  render() {
-    const { pastEvents } = this.state;
+     const vitalCards = pastEvents.map((event) => <VitalCards event={event} key={event.id} />);
 
-    const vitalCards = pastEvents.map((event) => <VitalCards event={event} key={event.id} />);
-
-    return (
+     return (
       <div>
         <div className='cards'>
         { vitalCards }
         </div>
       </div>
-    );
-  }
+     );
+   }
 }
 
 export default PastEvents;

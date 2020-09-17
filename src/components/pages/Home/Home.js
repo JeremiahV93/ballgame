@@ -11,29 +11,7 @@ import './Home.scss';
 class Home extends React.Component {
   state = {
     upcomingEvents: [],
-    pastEvents: [],
     today: new Date(),
-  }
-
-  getEventData = () => {
-    eventData.getEventsByUid(authData.getUid())
-      .then()
-      .catch((err) => console.error(err));
-  }
-
-  getPastEventData = () => {
-    eventData.getEventsByUid(authData.getUid())
-      .then((data) => {
-        const { today } = this.state;
-        const pastEvents = [];
-        data.forEach((eachEvent) => {
-          if (moment(eachEvent.date).isBefore(today)) {
-            pastEvents.push(eachEvent);
-          }
-        });
-        this.setState({ pastEvents });
-      })
-      .catch((err) => console.error(err));
   }
 
   getUpcomingEvents = () => {
@@ -53,7 +31,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.getUpcomingEvents();
-    this.getPastEventData();
   }
 
   render() {
