@@ -1,13 +1,18 @@
-.single-card {
+.single-view {
   display: flex;
-  align-content: center;
-  height: 50em;
-  width: 40em;
-  img {
-    width: 100%;
-  }
-  .card-body{
-    background-color: #A5ACAF;
-    box-shadow: 5px 3px 5px  #A5ACAF
-  }
+  justify-content: center;
+  .single-card {  
+    min-height: 50em;
+    width: 40em;
+    img {
+      width: 100%;
+    }
+    .card-body{
+      background-color: #A5ACAF;
+      box-shadow: 5px 3px 5px  #A5ACAF
+    }
+    .center {
+      text-align: center;
+    }
+  }  
 }
