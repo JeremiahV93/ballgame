@@ -91,30 +91,32 @@ class SingleEvent extends React.Component {
     };
 
     return (
-      <div className="card single-card" >
-        <img className="card-img-top" src={stadium.imgUrl} alt={stadium.name} />
-        <div className="card-body">
-          <h5 className="card-title">{stadium.name}</h5>
-          <p className="card-text"> {event.awayTeam} @ {stadium.team} </p>
-          <p className="card-text"> Start Time: {startTime} </p>
-          <p className="card-text">Parking:${stadium.parking}</p>
-          <div className="container">
-          <div className="row">
-            <div className="col-sm-4">Tickets:</div>
+      <div className='single-view'>
+        <div className="card single-card" >
+          <img className="card-img-top" src={stadium.imgUrl} alt={stadium.name} />
+          <div className="card-body">
+            <h2 className="card-title">{stadium.name}</h2>
+            <p className="card-text"> {event.awayTeam} @ {stadium.team} </p>
+            <p className="card-text"> Start Time: {startTime} </p>
+            <p className="card-text">Parking: ${stadium.parking}</p>
+            <div className="container">
+              <div className="row">
+                <div className="col"><h3>Tickets</h3></div>
+              </div>
+              <div className="row">
+                  <div className="col-sm-offset-4 col-sm-4"> <h4>Section:</h4></div>
+                  <div className="col-sm-4"><h5>{ticket.section}</h5></div>
+              </div>
+              <div className="row">
+                  <div className="col-sm-offset-4 col-sm-4"><h4>Seats:</h4></div>
+                  <div className="col-sm-4"> <h5>{ticket.seats}</h5>  </div>
+              </div>
+              { buildNotes() }
+            </div>
+            <Link to={eventFormLink} className='btn btn-warning'> Update Event </Link>
+            { addNotes() }
+            <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
           </div>
-          <div className="row">
-              <div className="col-sm-offset-4 col-sm-4"> Section:</div>
-              <div className="col-sm-4">{ticket.section}</div>
-          </div>
-          <div className="row">
-              <div className="col-sm-offset-4 col-sm-4">Seats:</div>
-              <div className="col-sm-4"> {ticket.seats} </div>
-          </div>
-          { buildNotes() }
-          </div>
-          <Link to={eventFormLink} className='btn btn-warning'> Update Event </Link>
-          { addNotes() }
-          <button className='btn btn-danger' onClick={this.deleteEventAndTickets}>Cancel Event</button>
         </div>
       </div>
     );

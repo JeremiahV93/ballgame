@@ -39,8 +39,10 @@ class VitalCards extends React.Component {
         <div className="card-body">
           <h5 className="card-title">{stadium.name}</h5>
           <p className="card-text">{event.awayTeamAcro} @ {stadium.acronym}</p>
-          <p className="card-text">{startTime}</p>
-          <p className="card-text">Parking: ${stadium.parking}</p>
+          <div class="row">
+            <div class="col-md-6"><p className="card-text ">{startTime}</p></div>
+            <div class="col-md-6"><p className="card-text">Parking: ${stadium.parking}</p></div>
+          </div>
           <Link to={singleEventLink} className='btn btn-info'> More Details </Link>
         </div>
       </div>
