@@ -15,35 +15,35 @@
   },
   "stadium3": {
     "name": "Chase Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Chase_Field_-_2011-07-11_-_Interior_North_Upper.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chase_Field_-_2011-07-11_-_Interior_North_Upper.jpg/1280px-Chase_Field_-_2011-07-11_-_Interior_North_Upper.jpg",
     "parking": 23,
     "team": "Arizona Diamondbacks",
     "acronym": "ARI"
   },
   "stadium5": {
     "name": "Citi Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Citi_Field,_June_2_2012.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Citi_Field%2C_June_2_2012.jpg/1280px-Citi_Field%2C_June_2_2012.jpg",
     "parking": 18,
     "team": "New York Mets",
     "acronym": "NYM"
   },
   "stadium6": {
     "name": "Citizens Bank Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Fieldatthepark.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Fieldatthepark.jpg/1280px-Fieldatthepark.jpg",
     "parking": 19,
     "team": "Philidelphia Phillies",
     "acronym": "PHI"
   },
   "stadium7": {
     "name": "Comercia Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Tigers_opening_day2_2007.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tigers_opening_day2_2007.jpg",
     "parking": 25,
     "team": "Detriot Tigers",
     "acronym": "DET"
   },
   "stadium8": {
     "name": "Coors Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Coors_field_1.JPG",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Coors_field_1.JPG",
     "parking": 28,
     "team": "Colorado Rockies",
     "acronym": "COL"
@@ -57,147 +57,147 @@
   },
   "stadium10": {
     "name": "Fenway Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Fenway_from_Legend's_Box.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/Fenway_from_Legend%27s_Box.jpg",
     "parking": 45,
     "team": "Boston Red Sox",
     "acronym": "BOS"
   },
   "stadium11": {
     "name": "Globe Life Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Globelifefield_june2020.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Globelifefield_june2020.jpg",
     "parking": 25,
     "team": "Texas Rangers",
     "acronym": "TEX"
   },
   "stadium12": {
     "name": "Great American Ballpark",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Great_American_Ball_Park_(20718178689).jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Busch_Stadium_III_%2816180972535%29.jpg",
     "parking": 22,
     "team": "Cincinnati Reds",
     "acronym": "CIN"
   },
   "stadium13": {
     "name": "Garanteed Rate Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:U.S._Cellular_Field_(30972191694).jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/U.S._Cellular_Field_%2830972191694%29.jpg",
     "parking": 25,
     "team": "Chicago White Sox",
     "acronym": "CWS"
   },
   "stadium14": {
     "name": "Kauffman Stadium",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:NewKauffman.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/NewKauffman.jpg",
     "parking": 26,
     "team": "Kansas City Royals",
     "acronym": "KAN"
   },
   "stadium15": {
     "name": "Marlin Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Marlins_First_Pitch_at_Marlins_Park,_April_4,_2012_(cropped).jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Marlins_First_Pitch_at_Marlins_Park%2C_April_4%2C_2012_%28cropped%29.jpg",
     "parking": 28,
     "team": "Miami Marlins",
     "acronym": "FLA"
   },
   "stadium16": {
     "name": "Miller Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:MillerPark2.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/MillerPark2.jpg",
     "parking": 25,
     "team": "Milwaukee Brewers",
     "acronym": "MIL"
   },
   "stadium17": {
     "name": "Minute Maid Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Minute_Maid_Park_2010.JPG",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Minute_Maid_Park_2010.JPG",
     "parking": 18,
     "team": "Huston Astros*",
     "acronym": "HOU*"
   },
   "stadium18": {
     "name": "Nationals Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Opening_of_Nationals_Park_-_039_(2377924697).jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Opening_of_Nationals_Park_-_039_%282377924697%29.jpg",
     "parking": 24,
     "team": "Washington Nationals",
     "acronym": "WAS"
   },
   "stadium19": {
     "name": "Oakland Coliseum",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:McAfee_Coliseum_(15993646150).jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/McAfee_Coliseum_%2815993646150%29.jpg",
     "parking": 22,
     "team": "Oakland Athletics",
     "acronym": "OAK"
   },
   "stadium20": {
-    "name": "Oracle PArk",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:ATT_Sunset_Panorama.jpg",
+    "name": "Oracle Park",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/ATT_Sunset_Panorama.jpg",
     "parking": 21,
     "team": "San Francisco Giants",
     "acronym": "SF"
   },
   "stadium21": {
     "name": "Oriole Park at Camdem Yards",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:CamdenYards_2005-05-08.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/CamdenYards_2005-05-08.jpg",
     "parking": 18,
     "team": "Baltimore Orioles",
     "acronym": "BAL"
   },
   "stadium22": {
     "name": "Petco Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Petco_Park_Interior.JPG",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Petco_Park_Interior.JPG",
     "parking": 19,
     "team": "San Diego Padres",
     "acronym": "SD"
   },
   "stadium23": {
     "name": "PNC Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:PNC_Park,_Home_of_Pittsburgh_Pirates.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/PNC_Park%2C_Home_of_Pittsburgh_Pirates.jpg",
     "parking": 24,
     "team": "Pittsburgh Pirates",
     "acronym": "PIT"
   },
   "stadium24": {
     "name": "Progressive Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:2016-10-06_Progressive_Field_before_ALDS_Game_1_between_Cleveland_and_Boston.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e6/2016-10-06_Progressive_Field_before_ALDS_Game_1_between_Cleveland_and_Boston.jpg",
     "parking": 22,
     "team": "Cleveland Indians",
     "acronym": "CLE"
   },
   "stadium25": {
     "name": "Rogers Centre",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Rogers_Centre_2017_from_upper_deck.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Rogers_Centre_2017_from_upper_deck.jpg",
     "parking": 25,
     "team": "Toronto Blue Jays",
     "acronym": "TOR"
   },
   "stadium26": {
     "name": "T-Mobile Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:SafecoFieldTop_(cropped).jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/SafecoFieldTop_%28cropped%29.jpg",
     "parking": 26,
     "team": "Seattle Mariners",
     "acronym": "SEA"
   },
   "stadium27": {
     "name": "Target Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Target_Field_April_2010.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/2/28/Target_Field_April_2010.jpg",
     "parking": 18,
     "team": "Minnesota Twins",
     "acronym": "MIN"
   },
   "stadium28": {
     "name": "Tropicana Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Tropicana_Field_Playing_Field_Opening_Day_2010.JPG",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Tropicana_Field_Playing_Field_Opening_Day_2010.JPG",
     "parking": 29,
     "team": "Tampa Bay Rays",
     "acronym": "TB"
   },
   "stadium29": {
     "name": "Truist Park",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:SunTrust_Park_Opening_Day_2017.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/SunTrust_Park_Opening_Day_2017.jpg",
     "parking": 22,
     "team": "Atlanta Braves",
     "acronym": "ATL"
   },
   "stadium30": {
     "name": "Wrigley Field",
-    "imgUrl": "https://en.wikipedia.org/wiki/List_of_current_Major_League_Baseball_stadiums#/media/File:Wrigley_Field_2018_-_42195054760.jpg",
+    "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Wrigley_Field_2018_-_42195054760.jpg",
     "parking": 34,
     "team": "Chicago Cubs",
     "acronym": "CHC"
