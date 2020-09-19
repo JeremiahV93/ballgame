@@ -80,8 +80,8 @@ class App extends React.Component {
         if (authData.getUid()) {
           userData.getUserData(authData.getUid())
             .then((currentUser) => {
-              if (currentUser.primaryColor) {
-                this.setState({ pColor: currentUser.primaryColor });
+              if (currentUser[0].primaryColor) {
+                this.setState({ pColor: currentUser[0].primaryColor });
               }
             })
             .catch((err) => console.error(err));

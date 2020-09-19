@@ -175,6 +175,8 @@ const teamColors = [
   },
 ];
 
-const getTeamColors = (Acro) => teamColors.find((team) => team.acronym === Acro);
+const getTeamColorsByAcro = (Acro) => teamColors.find((team) => team.acronym === Acro);
 
-export default { getTeamColors };
+const teamColorData = () => teamColors;
+
+export default { getTeamColorsByAcro, teamColorData };

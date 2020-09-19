@@ -11,8 +11,8 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import userData from '../../../helpers/data/userData';
-import authData from '../../../helpers/data/authData';
+// import userData from '../../../helpers/data/userData';
+// import authData from '../../../helpers/data/authData';
 
 import Auth from './Auth';
 import LogOut from './Logout';
@@ -33,15 +33,15 @@ class MyNavbar extends React.Component {
   }
 
   componentDidUpdate() {
-    if (authData.getUid()) {
-      userData.getUserData(authData.getUid())
-        .then((currentUser) => {
-          if (currentUser.secondColor) {
-            this.setState({ color: currentUser.secondColor });
-          }
-        })
-        .catch((err) => console.error(err));
-    }
+    // if (authData.getUid()) {
+    //   userData.getUserData(authData.getUid())
+    //     .then((currentUser) => {
+    //       if (currentUser[0].secondColor) {
+    //         this.setState({ color: currentUser[0].secondColor });
+    //       }
+    //     })
+    //     .catch((err) => console.error(err));
+    // }
   }
 
   render() {
