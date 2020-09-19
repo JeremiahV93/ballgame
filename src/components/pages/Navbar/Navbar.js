@@ -19,12 +19,12 @@ import LogOut from './Logout';
 
 class MyNavbar extends React.Component {
   static propTypes = {
-    authed: PropTypes.bool.isRequired,
-    color: '',
+    authed: PropTypes.bool,
   }
 
   state = {
     isOpen: false,
+    color: '#005A9C',
   }
 
   toggle = () => {
@@ -33,11 +33,15 @@ class MyNavbar extends React.Component {
   }
 
   componentDidUpdate() {
-    userData.getUserData(authData.getUid())
-      .then((currentUser) => {
-        this.setState({ color: currentUser[0].secondColor });
-      })
-      .catch((err) => console.error(err));
+    if (authData.getUid()) {
+      userData.getUserData(authData.getUid())
+        .then((currentUser) => {
+          if (currentUser.secondColor) {
+            this.setState({ color: currentUser.secondColor });
+          }
+        })
+        .catch((err) => console.error(err));
+    }
   }
 
   render() {
@@ -56,6 +60,9 @@ class MyNavbar extends React.Component {
           </NavItem>
           <NavItem>
             <NavLink tag={RRNavLink} to='/form'>New Game</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/user'>User Settings</NavLink>
           </NavItem>
           <NavItem>
             <LogOut/>

@@ -22,6 +22,7 @@ import SingleEvent from '../components/pages/SingleEvent/SingleEvent';
 import EventForm from '../components/pages/GameForm/EventForm';
 import UpdateForm from '../components/pages/UpdateEvent/UpdateEvent';
 import NoteForm from '../components/pages/NoteForm/NoteForm';
+import UserSettings from '../components/pages/UserSettings/UserSettings';
 
 import firebaseConnection from '../helpers/data/connection';
 
@@ -56,6 +57,7 @@ const RoutesContainer = ({ authed }) => {
         <PrivateRoute path="/update/:eventId" component={UpdateForm} authed={authed} />
         <PrivateRoute path="/past-events" component={PastEvents} authed={authed} />
         <PrivateRoute path="/note-form/:eventId" component={NoteForm} authed={authed} />
+        <PrivateRoute path="/user" component={UserSettings} authed={authed} />
 
         <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
 
@@ -68,18 +70,22 @@ const RoutesContainer = ({ authed }) => {
 class App extends React.Component {
   state = {
     authed: null,
-    pColor: '',
+    pColor: '#005A9C',
   }
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ authed: true });
-        userData.getUserData(authData.getUid())
-          .then((currentUser) => {
-            this.setState({ pColor: currentUser[0].primaryColor });
-          })
-          .catch((err) => console.error(err));
+        if (authData.getUid()) {
+          userData.getUserData(authData.getUid())
+            .then((currentUser) => {
+              if (currentUser.primaryColor) {
+                this.setState({ pColor: currentUser.primaryColor });
+              }
+            })
+            .catch((err) => console.error(err));
+        }
       } else {
         this.setState({ authed: false });
       }
@@ -96,6 +102,7 @@ class App extends React.Component {
       <div className="App"
         style={{
           backgroundColor: pColor,
+          height: '100vmax',
           // borderTop: `1px ${sColor} solid`,
         }}
       >

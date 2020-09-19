@@ -1,14 +1,9 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
-import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getUserData = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
-    .then(({ data }) => resolve(utils.firebaseArray(data)))
-    .catch((err) => reject(err));
-});
+const getUserData = (id) => axios.get(`${baseUrl}/uers/${id}.json`);
 
 const addUser = (newUser) => axios.post(`${baseUrl}/users.json`, newUser);
 
