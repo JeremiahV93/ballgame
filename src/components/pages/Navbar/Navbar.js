@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink as RRNavLink } from 'react-router-dom';
-
 import {
   Collapse,
   NavbarToggler,
@@ -17,12 +16,14 @@ import LogOut from './Logout';
 
 class MyNavbar extends React.Component {
   static propTypes = {
-    authed: PropTypes.bool.isRequired,
+    authed: PropTypes.bool,
   }
 
   state = {
     isOpen: false,
   }
+
+  // props
 
   toggle = () => {
     const { isOpen } = this.state;
@@ -31,7 +32,7 @@ class MyNavbar extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    const { authed } = this.props;
+    const { authed, secondColor } = this.props;
 
     const buildNavBar = () => {
       if (authed) {
@@ -45,6 +46,9 @@ class MyNavbar extends React.Component {
           </NavItem>
           <NavItem>
             <NavLink tag={RRNavLink} to='/form'>New Game</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/user'>User Settings</NavLink>
           </NavItem>
           <NavItem>
             <LogOut/>
@@ -62,8 +66,10 @@ class MyNavbar extends React.Component {
     };
 
     return (
-      <div>
-        <Navbar color="light" light expand="md">
+      <div >
+        <Navbar color="light" light expand="md" style= {{
+          borderBottom: `5px ${secondColor} solid `,
+        }}>
           <NavbarBrand href="/">Ballgame</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>

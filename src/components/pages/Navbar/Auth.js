@@ -2,11 +2,23 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import userData from '../../../helpers/data/userData';
+
 class LogIn extends React.Component {
   logInEvent = (e) => {
     e.preventDefault();
     const googleProvider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(googleProvider);
+    firebase.auth().signInWithPopup(googleProvider)
+      .then((res) => {
+        if (res.additionalUserInfo.isNewUser) {
+          const newUser = {
+            uid: res.user.uid,
+            favTeam: '',
+          };
+          userData.addUser(newUser);
+        }
+      })
+      .catch((err) => console.error(err));
   }
 
   render() {
