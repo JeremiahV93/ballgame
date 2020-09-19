@@ -10,6 +10,8 @@ const getUserData = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const addUser = (newUser) => axios.post(`${baseUrl}/users.json`, newUser);
+
 const updateUser = (userId, userobj) => axios.patch(`${baseUrl}/users/${userId}.json`, userobj);
 
-export default { getUserData, updateUser };
+export default { getUserData, updateUser, addUser };

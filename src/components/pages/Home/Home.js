@@ -5,6 +5,7 @@ import authData from '../../../helpers/data/authData';
 import eventData from '../../../helpers/data/eventData';
 
 import VitalCards from '../VitalCards/VitalCards';
+import NewUser from '../NewUser/NewUser';
 
 import './Home.scss';
 
@@ -39,7 +40,7 @@ class Home extends React.Component {
 
     if (upcomingEvents.length === 0) {
       return (
-        <i className="fas fa-spin fa-baseball-ball"></i>
+        <NewUser />
       );
     }
     return upcomingEvents.map((event) => <VitalCards event={event} key={event.id} />);

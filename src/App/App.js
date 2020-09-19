@@ -11,6 +11,9 @@ import {
 
 import './App.scss';
 
+import authData from '../helpers/data/authData';
+import userData from '../helpers/data/userData';
+
 import Navbar from '../components/pages/Navbar/Navbar';
 import Home from '../components/pages/Home/Home';
 import PastEvents from '../components/pages/PastEvents/PastEvents';
@@ -65,12 +68,18 @@ const RoutesContainer = ({ authed }) => {
 class App extends React.Component {
   state = {
     authed: null,
+    color: '',
   }
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ authed: true });
+        userData.getUserData(authData.getUid())
+          .then((currentUser) => {
+            this.setState({ color: currentUser[0].primaryColor });
+          })
+          .catch((err) => console.error(err));
       } else {
         this.setState({ authed: false });
       }
@@ -82,9 +91,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { authed } = this.state;
+    const { authed, color } = this.state;
     return (
-      <div className="App">
+      <div className="App"
+        style={{
+          backgroundColor: color,
+        }}
+      >
         <BrowserRouter>
             <Navbar authed={authed} />
             <RoutesContainer authed={authed} />
