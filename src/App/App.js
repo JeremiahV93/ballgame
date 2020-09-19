@@ -68,7 +68,7 @@ const RoutesContainer = ({ authed }) => {
 class App extends React.Component {
   state = {
     authed: null,
-    color: '',
+    pColor: '',
   }
 
   componentDidMount() {
@@ -77,7 +77,7 @@ class App extends React.Component {
         this.setState({ authed: true });
         userData.getUserData(authData.getUid())
           .then((currentUser) => {
-            this.setState({ color: currentUser[0].primaryColor });
+            this.setState({ pColor: currentUser[0].primaryColor });
           })
           .catch((err) => console.error(err));
       } else {
@@ -91,11 +91,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { authed, color } = this.state;
+    const { authed, pColor } = this.state;
     return (
       <div className="App"
         style={{
-          backgroundColor: color,
+          backgroundColor: pColor,
+          // borderTop: `1px ${sColor} solid`,
         }}
       >
         <BrowserRouter>
