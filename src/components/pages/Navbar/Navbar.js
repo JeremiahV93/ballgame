@@ -11,9 +11,6 @@ import {
   NavLink,
 } from 'reactstrap';
 
-// import userData from '../../../helpers/data/userData';
-// import authData from '../../../helpers/data/authData';
-
 import Auth from './Auth';
 import LogOut from './Logout';
 
@@ -24,29 +21,18 @@ class MyNavbar extends React.Component {
 
   state = {
     isOpen: false,
-    color: '#005A9C',
   }
+
+  // props
 
   toggle = () => {
     const { isOpen } = this.state;
     this.setState({ isOpen: !isOpen });
   }
 
-  componentDidUpdate() {
-    // if (authData.getUid()) {
-    //   userData.getUserData(authData.getUid())
-    //     .then((currentUser) => {
-    //       if (currentUser[0].secondColor) {
-    //         this.setState({ color: currentUser[0].secondColor });
-    //       }
-    //     })
-    //     .catch((err) => console.error(err));
-    // }
-  }
-
   render() {
-    const { isOpen, color } = this.state;
-    const { authed } = this.props;
+    const { isOpen } = this.state;
+    const { authed, secondColor } = this.props;
 
     const buildNavBar = () => {
       if (authed) {
@@ -82,7 +68,7 @@ class MyNavbar extends React.Component {
     return (
       <div >
         <Navbar color="light" light expand="md" style= {{
-          borderBottom: `5px ${color} solid `,
+          borderBottom: `5px ${secondColor} solid `,
         }}>
           <NavbarBrand href="/">Ballgame</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />

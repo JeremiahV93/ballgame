@@ -30,18 +30,18 @@ firebaseConnection();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false
-    ? (<Component {...props} />)
+    ? (<Component {...props} {...rest} />)
     : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === true
-    ? (<Component {...props} />)
+    ? (<Component {...props} {...rest} />)
     : (<Redirect to={{ pathname: '/landingPage', state: { from: props.location } }} />));
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
-const RoutesContainer = ({ authed }) => {
+const RoutesContainer = ({ authed, setBackgroundcolor }) => {
   if (authed === null) {
     return (
       <i className="fas fa-spin fa-baseball-ball"></i>
@@ -57,7 +57,7 @@ const RoutesContainer = ({ authed }) => {
         <PrivateRoute path="/update/:eventId" component={UpdateForm} authed={authed} />
         <PrivateRoute path="/past-events" component={PastEvents} authed={authed} />
         <PrivateRoute path="/note-form/:eventId" component={NoteForm} authed={authed} />
-        <PrivateRoute path="/user" component={UserSettings} authed={authed} />
+        <PrivateRoute path="/user" component={UserSettings} authed={authed} setBackgroundcolor={setBackgroundcolor} />
 
         <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
 
@@ -71,17 +71,23 @@ class App extends React.Component {
   state = {
     authed: null,
     pColor: '#005A9C',
+    secondColor: '',
+  }
+
+  setBackgroundcolor = (backgroundColor, accentColor) => {
+    this.setState({ pColor: backgroundColor, secondColor: accentColor });
   }
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ authed: true });
+
         if (authData.getUid()) {
           userData.getUserData(authData.getUid())
             .then((currentUser) => {
               if (currentUser[0].primaryColor) {
-                this.setState({ pColor: currentUser[0].primaryColor });
+                this.setBackgroundcolor(currentUser[0].primaryColor, currentUser[0].secondColor);
               }
             })
             .catch((err) => console.error(err));
@@ -92,12 +98,14 @@ class App extends React.Component {
     });
   }
 
+  // create func that set state for collor and pass that as prop all the way down into the user settings, then call that func
+
   componentWillUnmount() {
     this.removeListener();
   }
 
   render() {
-    const { authed, pColor } = this.state;
+    const { authed, pColor, secondColor } = this.state;
     return (
       <div className="App"
         style={{
@@ -107,8 +115,8 @@ class App extends React.Component {
         }}
       >
         <BrowserRouter>
-            <Navbar authed={authed} />
-            <RoutesContainer authed={authed} />
+            <Navbar authed={authed} secondColor={secondColor} />
+            <RoutesContainer authed={authed} setBackgroundcolor={this.setBackgroundcolor} />
         </BrowserRouter>
       </div>
     );
