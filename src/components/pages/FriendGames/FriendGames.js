@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import smash from '../../../helpers/data/FriendGamesSmash';
 
+import VitalCards from '../VitalCards/VitalCards';
+
 class FriendGames extends React.Component {
 static Proptype = {
   email: PropTypes.string,
@@ -11,6 +13,7 @@ static Proptype = {
 state = {
   email: '',
   games: [],
+  friend: true,
 }
 
 componentDidMount() {
@@ -24,8 +27,27 @@ componentDidMount() {
 }
 
 render() {
+  const { games, friend } = this.state;
+
+  // Func below does work, maybe becuase state is being set when the page loads?
+  // const noGames = () => {
+  //   if (games.length === 0) {
+  //     return (
+  //       <h1> Your friend Doesn't have any games yet!</h1>
+  //     );
+  //   }
+  //   return null;
+  // };
+
+  const buildCards = () => games.map((event) => <VitalCards event={event} key={event.id} friend={friend} />);
+
   return (
-      <div> friend games printed here</div>
+      <div>
+        <h1>Friend's Games</h1>
+        <div className='cards'>
+          { buildCards() }
+        </div>
+      </div>
   );
 }
 }
