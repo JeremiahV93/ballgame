@@ -30,14 +30,14 @@ render() {
   const { games, friend } = this.state;
 
   // Func below does work, maybe becuase state is being set when the page loads?
-  // const noGames = () => {
-  //   if (games.length === 0) {
-  //     return (
-  //       <h1> Your friend Doesn't have any games yet!</h1>
-  //     );
-  //   }
-  //   return null;
-  // };
+  const noGames = () => {
+    if (games.length === 0) {
+      return (
+        <h1> Your friend Doesn't have any games yet!</h1>
+      );
+    }
+    return null;
+  };
 
   const buildCards = () => games.map((event) => <VitalCards event={event} key={event.id} friend={friend} />);
 
@@ -45,6 +45,7 @@ render() {
       <div>
         <h1>Friend's Games</h1>
         <div className='cards'>
+          { noGames() }
           { buildCards() }
         </div>
       </div>
