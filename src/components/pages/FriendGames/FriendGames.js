@@ -21,15 +21,19 @@ componentDidMount() {
   this.setState({ email });
   smash.userGameSmash(email)
     .then((res) => {
+      console.error(res);
       this.setState({ games: res });
     })
     .catch((err) => console.error(err));
 }
 
 render() {
-  const { games, friend } = this.state;
+  const { email, games, friend } = this.state;
 
-  // Func below does work, maybe becuase state is being set when the page loads?
+  // const nofriend = () => {
+  //   if (email === '')
+  // }
+
   const noGames = () => {
     if (games.length === 0) {
       return (
