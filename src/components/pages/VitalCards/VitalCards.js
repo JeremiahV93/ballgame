@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -15,6 +16,7 @@ class VitalCards extends React.Component {
 
   props = {
     event: eventShape,
+    friend: PropTypes.bool,
   }
 
   componentDidMount() {
@@ -25,12 +27,19 @@ class VitalCards extends React.Component {
   }
 
   render() {
-    const { event } = this.props;
+    const { event, friend } = this.props;
     const { stadium } = this.state;
 
     const startTime = moment(event.date).format('MMMM Do YYYY, h:mm a');
 
     const singleEventLink = `/events/${event.id}`;
+
+    const buildLink = () => {
+      if (!friend) {
+        return <Link to={singleEventLink} className='btn btn-info'> More Details </Link>;
+      }
+      return null;
+    };
 
     return (
       <div className="card" >
@@ -42,7 +51,7 @@ class VitalCards extends React.Component {
             <div className="col-md-6"><p className="card-text ">{startTime}</p></div>
             <div className="col-md-6"><p className="card-text">Parking: ${stadium.parking}</p></div>
           </div>
-          <Link to={singleEventLink} className='btn btn-info'> More Details </Link>
+          { buildLink() }
         </div>
       </div>
     );

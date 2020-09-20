@@ -23,6 +23,8 @@ import EventForm from '../components/pages/GameForm/EventForm';
 import UpdateForm from '../components/pages/UpdateEvent/UpdateEvent';
 import NoteForm from '../components/pages/NoteForm/NoteForm';
 import UserSettings from '../components/pages/UserSettings/UserSettings';
+import GameLookUp from '../components/pages/GameLookUp/GameLookUp';
+import FriendGames from '../components/pages/FriendGames/FriendGames';
 
 import firebaseConnection from '../helpers/data/connection';
 
@@ -58,6 +60,8 @@ const RoutesContainer = ({ authed, setBackgroundcolor }) => {
         <PrivateRoute path="/past-events" component={PastEvents} authed={authed} />
         <PrivateRoute path="/note-form/:eventId" component={NoteForm} authed={authed} />
         <PrivateRoute path="/user" component={UserSettings} authed={authed} setBackgroundcolor={setBackgroundcolor} />
+        <PrivateRoute path="/lookup" component={GameLookUp} authed={authed} />
+        <PrivateRoute path="/friend/:email" component={FriendGames} authed={authed} />
 
         <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
 

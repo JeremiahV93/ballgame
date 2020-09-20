@@ -14,6 +14,7 @@ class LogIn extends React.Component {
           const newUser = {
             uid: res.user.uid,
             favTeam: '',
+            email: res.user.email,
           };
           userData.addUser(newUser);
         }
