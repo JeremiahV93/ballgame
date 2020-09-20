@@ -24,21 +24,20 @@ componentDidMount() {
       console.error(res);
       this.setState({ games: res });
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      this.setState({ email: '' });
+    });
 }
 
 render() {
   const { email, games, friend } = this.state;
 
-  // const nofriend = () => {
-  //   if (email === '')
-  // }
-
-  const noGames = () => {
-    if (games.length === 0) {
-      return (
-        <h1> Your friend Doesn't have any games yet!</h1>
-      );
+  const nofriend = () => {
+    if (email === '') {
+      return <h1>No Friends with that email</h1>;
+    } if (games.length === 0) {
+      return <h1> Your friend Doesn't have any games yet!</h1>;
     }
     return null;
   };
@@ -49,7 +48,7 @@ render() {
       <div>
         <h1>Friend's Games</h1>
         <div className='cards'>
-          { noGames() }
+          { nofriend() }
           { buildCards() }
         </div>
       </div>
