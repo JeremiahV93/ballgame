@@ -20,8 +20,7 @@ class NoteForm extends React.Component {
     e.preventDefault();
     const { notes } = this.state;
     const { eventId } = this.props.match.params;
-    const patchNotes = { notes };
-    eventData.addEventNotes(eventId, patchNotes)
+    eventData.addEventNotes(eventId, notes)
       .then(() => {
         this.props.history.goBack();
       })
@@ -35,8 +34,7 @@ class NoteForm extends React.Component {
           <label htmlFor="section">Game Notes</label>
           <textarea type="text" onChange={this.noteEventChange} className="form-control" id="note" placeholder="Add exciting game notes!"></textarea>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={this.submitEvent}>Submit</button>
-
+        <button type="submit" className="btn btn-primary" onClick={this.submitEvent}>Add Entry</button>
       </div>
     );
   }

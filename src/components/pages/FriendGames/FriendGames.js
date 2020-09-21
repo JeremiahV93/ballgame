@@ -18,16 +18,11 @@ state = {
 
 componentDidMount() {
   const { email } = this.props.match.params;
-  this.setState({ email });
   smash.userGameSmash(email)
     .then((res) => {
-      console.error(res);
-      this.setState({ games: res });
+      this.setState({ games: res, email });
     })
-    .catch((err) => {
-      console.error(err);
-      this.setState({ email: '' });
-    });
+    .catch((err) => console.error(err));
 }
 
 render() {

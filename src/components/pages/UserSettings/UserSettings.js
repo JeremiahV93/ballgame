@@ -11,10 +11,6 @@ class UserSettings extends React.Component {
     favTeamAcro: '',
   }
 
-  // props = {
-  //   setBackgroundcolor
-  // }
-
   componentDidMount() {
     userData.getUserData(authData.getUid())
       .then((res) => this.setState({ user: res[0] }))
@@ -32,10 +28,13 @@ class UserSettings extends React.Component {
     const { user, favTeamAcro } = this.state;
     // get func out of props
     const teamDataObj = teamColor.getTeamColorsByAcro(favTeamAcro);
+
     user.favTeam = teamDataObj.acronym;
     user.primaryColor = teamDataObj.primaryColor;
     user.secondColor = teamDataObj.secondColor;
+
     this.props.setBackgroundcolor(user.primaryColor, user.secondColor);
+
     userData.updateUser(user.id, user)
       .then(() => this.props.history.push('/home'))
       .catch((err) => console.error(err));
@@ -51,7 +50,7 @@ class UserSettings extends React.Component {
 
         <label htmlFor="home-stadium">Favorite Team</label>
         <select onChange={this.favTeamChange} id='stadium' className="form-control">
-          <option>Default select</option>
+          <option>Please pick your Favorite Team!</option>
           {teams.map((team) => <option key={team.id} value={team.acronym}> {team.team}</option>)}
         </select>
 

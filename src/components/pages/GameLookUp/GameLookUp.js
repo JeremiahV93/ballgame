@@ -24,8 +24,8 @@ class GameLookuUp extends React.Component {
         <form className='col-6 offset-3'>
 
           <div className="form-group">
-            <label htmlFor="feiend-email">Friend's E-mail</label>
-            <input type="text" onChange={this.emailEventChange} className="form-control" id="section" placeholder="Section" />
+            <label htmlFor="friend-email">Friend's E-mail</label>
+            <input type="text" onChange={this.emailEventChange} className="form-control" id="email" placeholder="Friend's email" />
           </div>
 
           <Link to={friendGamesLink} className='btn btn-info'> Find Games! </Link>

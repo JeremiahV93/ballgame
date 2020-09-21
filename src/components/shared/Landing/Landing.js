@@ -7,7 +7,6 @@ class LandingPage extends React.Component {
     return (
       <div>
         <h1>Take me out to the Ballgame!</h1>
-        <p> Please log in</p>
       </div>
     );
   }

@@ -23,8 +23,6 @@ class MyNavbar extends React.Component {
     isOpen: false,
   }
 
-  // props
-
   toggle = () => {
     const { isOpen } = this.state;
     this.setState({ isOpen: !isOpen });

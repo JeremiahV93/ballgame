@@ -3,7 +3,6 @@ import DatePicker from 'react-datepicker';
 
 import stadiumData from '../../../helpers/data/stadiumData';
 import authData from '../../../helpers/data/authData';
-
 import eventData from '../../../helpers/data/eventData';
 import tickeData from '../../../helpers/data/ticketData';
 
@@ -87,7 +86,6 @@ class EventForm extends React.Component {
       stadiums, stadiumId, awayTeam, date,
     } = this.state;
 
-    // string split on a comma and turn it into an array
     return (
       <form className='col-6 offset-3'>
 
@@ -109,7 +107,7 @@ class EventForm extends React.Component {
         <label htmlFor="visiting-team">Visiting Team</label>
         <select value={awayTeam} onChange={this.awayTeamChange} className="form-control">
           <option>Default select</option>
-          {stadiums.map((stadium) => <option key={stadium.id} value={stadium.team}>{stadium.team}</option>)}
+          {stadiums.map((stadium) => <option key={stadium.id} value={stadium.team}> {stadium.team} </option>)}
         </select>
 
         <div className="form-group">
