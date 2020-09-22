@@ -63,12 +63,9 @@ class MyNavbar extends React.Component {
       return (
         <Nav>
           <NavItem>
-            <NavLink tag={RRNavLink} to='/vote'>Vote</NavLink>
+            <Auth/>
           </NavItem>
-            <NavItem>
-              <Auth/>
-            </NavItem>
-          </Nav>
+        </Nav>
       );
     };
 
