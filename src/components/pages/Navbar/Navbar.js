@@ -52,6 +52,9 @@ class MyNavbar extends React.Component {
             <NavLink tag={RRNavLink} to='/user'>User Settings</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink tag={RRNavLink} to='/vote'>Vote</NavLink>
+          </NavItem>
+          <NavItem>
             <LogOut/>
           </NavItem>
         </Nav>
@@ -59,6 +62,9 @@ class MyNavbar extends React.Component {
       }
       return (
         <Nav>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/vote'>Vote</NavLink>
+          </NavItem>
             <NavItem>
               <Auth/>
             </NavItem>
