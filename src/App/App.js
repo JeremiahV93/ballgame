@@ -25,6 +25,7 @@ import NoteForm from '../components/pages/NoteForm/NoteForm';
 import UserSettings from '../components/pages/UserSettings/UserSettings';
 import GameLookUp from '../components/pages/GameLookUp/GameLookUp';
 import FriendGames from '../components/pages/FriendGames/FriendGames';
+import Vote from '../components/shared/Vote/Vote';
 
 import firebaseConnection from '../helpers/data/connection';
 
@@ -62,6 +63,7 @@ const RoutesContainer = ({ authed, setBackgroundcolor }) => {
         <PrivateRoute path="/user" component={UserSettings} authed={authed} setBackgroundcolor={setBackgroundcolor} />
         <PrivateRoute path="/lookup" component={GameLookUp} authed={authed} />
         <PrivateRoute path="/friend/:email" component={FriendGames} authed={authed} />
+        <PrivateRoute path='/vote' component={Vote} authed={authed} />
 
         <PublicRoute path='/landingPage' component={LandingPage} authed={authed} />
 
