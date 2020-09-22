@@ -75,7 +75,7 @@ class App extends React.Component {
   state = {
     authed: null,
     pColor: '#005A9C',
-    secondColor: '',
+    secondColor: '#005A9C',
   }
 
   setBackgroundcolor = (backgroundColor, accentColor) => {
@@ -102,8 +102,6 @@ class App extends React.Component {
     });
   }
 
-  // create func that set state for collor and pass that as prop all the way down into the user settings, then call that func
-
   componentWillUnmount() {
     this.removeListener();
   }
@@ -115,7 +113,6 @@ class App extends React.Component {
         style={{
           backgroundColor: pColor,
           height: '100vmax',
-          // borderTop: `1px ${sColor} solid`,
         }}
       >
         <BrowserRouter>
