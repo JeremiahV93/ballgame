@@ -51,7 +51,7 @@ class UserSettings extends React.Component {
         <label htmlFor="home-stadium">Favorite Team</label>
         <select onChange={this.favTeamChange} id='stadium' className="form-control">
           <option>Please pick your Favorite Team!</option>
-          {teams.map((team) => <option key={team.id} value={team.acronym}> {team.team}</option>)}
+          {teams.map((team) => <option key={team.name} value={team.acronym}> {team.team}</option>)}
         </select>
 
         <button type="submit" className="btn btn-primary" onClick={this.submitEvent}>Submit</button>
